@@ -1,0 +1,13 @@
+import re
+exampleFile = open(r'headlines.txt', encoding='utf-8') # a file with headlines
+exampleFile1 = exampleFile.read()
+
+with open (r'list_emotions.txt', encoding='utf-8') as f: #a file with Ukrainian state verbs
+    ne_verbs = [row.strip() for row in f]
+    for i in range(len(ne_verbs)):
+        ze = re.compile(ne_verbs[i])
+        zef = ze.findall(exampleFile1)
+        with open(r'results.txt', 'a', encoding='utf-8') as file:
+            for u in zef:
+                p = ('%s' % (u))
+                print(p, file=file)
